@@ -39,10 +39,9 @@ y_pred = model.predict(x)
 
 # Performance test
 
-<!-- TODO: 性能测试 -->
-
-![Stress](https://raw.githubusercontent.com/chenghui03/Calib_RT/main/img/performance.jpg)
-
+<div align=center>
+<img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/main/img/performance.jpg" alt="Your Image" width="500">
+</div>
 
 For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper.
 
