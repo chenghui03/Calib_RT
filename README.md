@@ -3,7 +3,9 @@ Calib-RT is an open-source Python software package designed for RT (retention ti
 This package provides a flexible and robust solution for achieving accurate RT calibration across various data scales while handling a certain level of noise interference. 
 
 The workflow diagram is below, providing an overview of the process. For a comprehensive and in-depth explanation, please refer to the associated paper for detailed insights and analysis.
-<center><img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/93750fced36ee36786e61817d71d6ec5e2c5fdd3/img/workflow.svg" alt="Your Image" width="500" ></center>
+<div style="text-align: center; width: 500px; border: green solid 1px;">
+<img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/93750fced36ee36786e61817d71d6ec5e2c5fdd3/img/workflow.svg" alt="Your Image" width="500">
+</div>
 
 # Installation
 You can install the calib_rt package using pip:
