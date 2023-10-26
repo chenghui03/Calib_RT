@@ -6,7 +6,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="calib_rt",                                     
-    version="0.0.3",                                        
+    version="0.0.4",                                        
     author="yichi zhang",                                       
     author_email="kszyc1001@163.com",                   
     description="calib_rt",                            
