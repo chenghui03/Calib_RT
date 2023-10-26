@@ -1,3 +1,7 @@
+# Version
+
+This document is for version 0.1.0 of calib_rt.
+
 # Calib-RT
 Calib-RT is an open-source Python software package designed for RT (retention time) calibration. 
 This package provides a flexible and robust solution for achieving accurate RT calibration across various data scales while handling a certain level of noise interference. 
@@ -9,9 +13,17 @@ The workflow diagram is below, providing an overview of the process. For a compr
 </div>
 
 # Installation
+To use calib_rt, make sure you have the following dependencies installed:
+- Python (>= 3.10)
+- numpy (>= 1.26.0)
+- pandas (>= 2.1.1)
+- networkx (>= 3.1)
+- statsmodels (>= 0.14.0)
+- scipy (>= 1.11.3)
+
 You can install the calib_rt package using pip:
 ```bash
-pip install calib_rt 
+pip install pycalib_rt 
 ```
 
 # Usage
@@ -28,13 +40,13 @@ calib_rt.RTdatasets.get_datasets_list()
    3         linear             2
    4              S             2
 # use first of "S" type datasets
-datasets = calib_rt.RTdatasets.get_pandas(sample_type="S",1)   
+datasets = calib_rt.RTdatasets.get_pandas(sample_type="S",index_in_group=1)
 x = datasets["Spectral library RT"]
 y = datasets["Measured RT"]
 # fit and predict
 model = calib_rt.Calib_RT() 
-model.fit(x,y)                  
-y_pred = model.predict(x)        
+model.fit(x,y)
+y_pred = model.predict(x)         
 ```
 
 # Performance test
