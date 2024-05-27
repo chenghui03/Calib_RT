@@ -3,24 +3,26 @@
 import statsmodels.api as sm
 import numpy as np
 from scipy.interpolate import interp1d
+import utils
 
 
 class InputDataError(Exception):
     def __init__(self, message) -> None:
         super().__init__(message)
 
-def fit_by_lowess(x, y,manual_frac=-1):
+
+def fit_by_lowess(x, y, manual_frac=-1):
     data=np.column_stack((x,y))
     data = data[data[:, 0] != 0]
     x,y=data[:,0],data[:,1]
 
-    if manual_frac==-1:
+    if manual_frac == -1:
         frac=choose_frac(x,y)
-        print(f"Choose frac:{frac:.2f} automatically")
+        print(f"Choose lowess frac: {frac:.2f}")
     else:
         frac=manual_frac
 
-    # 拟合 by lowess
+    # by lowess
     lowess = sm.nonparametric.lowess
     y_lowess = lowess(y, x, frac)
     x_fit, y_fit = zip(*y_lowess)
@@ -28,33 +30,32 @@ def fit_by_lowess(x, y,manual_frac=-1):
     return x_fit, y_fit
 
 
-def choose_frac(x,y,delta_k_threshold=2):
-    
-    for frac in np.linspace(0,1,20)[2:]:
-        lowess = sm.nonparametric.lowess(y, x, frac)  
-        x_smoothed,y_smoothed =map(np.array,zip(*lowess)) 
-        
-        
-        delta_x=x_smoothed[1:]-x_smoothed[:-1]
-        delta_x = np.where(delta_x == 0, np.inf,delta_x)
+def choose_frac(x, y):
+    frac_v = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3]
+    mape_v = []
+    for frac in frac_v:
+        y_pred = sm.nonparametric.lowess(y, x, frac, return_sorted=False)
+        mape = utils.cal_mrd(y, y_pred)
+        mape_v.append(mape)
+    return frac_v[np.argmin(mape_v)]
 
-        delta_y=y_smoothed[1:]-y_smoothed[:-1]
-        
-        k_list=delta_y/delta_x
-        k_list=k_list[~np.isnan(k_list)]
-
-        k_delta=k_list[1:]-k_list[:-1]
-        if abs(np.nanmax(k_delta)) < delta_k_threshold :
-            return frac
-    else:
-        raise InputDataError("Please check if your filtered data is approiate")
 
 class Predictor:
     def __init__(self,x_fit,y_fit) -> None:
         
         data=self.__make_x_unique(x_fit,y_fit)
         x_fit,y_fit=data[:,0],data[:,1]
-        self.f = interp1d(x_fit, y_fit, kind ='linear', fill_value='extrapolate')
+        self.f_in = interp1d(x_fit, y_fit, kind ='linear')
+
+        # extrapolate for start
+        idx_start = np.argsort(x_fit)[:5]
+        coefficients = np.polyfit(x_fit[idx_start], y_fit[idx_start], 1)
+        self.f_start = np.poly1d(coefficients)
+
+        # extrapolate for end
+        idx_end = np.argsort(x_fit)[::-1][:5]
+        coefficients = np.polyfit(x_fit[idx_end], y_fit[idx_end], 1)
+        self.f_end = np.poly1d(coefficients)
 
     def __make_x_unique(self,x_fit,y_fit):
         data=np.column_stack((x_fit,y_fit))
@@ -65,4 +66,18 @@ class Predictor:
         return np.array(list(unique_data.items()))
 
     def predict(self,x_interp):
-         return self.f(x_interp)
+        x_max, x_min = self.f_in.x.max(), self.f_in.x.min()
+        is_inner = (x_interp <= x_max) & (x_interp >= x_min)
+        is_start = x_interp < x_min
+        is_end = x_interp > x_max
+        x_in = x_interp[is_inner]
+        x_start = x_interp[is_start]
+        x_end = x_interp[is_end]
+        x_in_pred = self.f_in(x_in)
+        x_start_pred = self.f_start(x_start)
+        x_end_pred = self.f_end(x_end)
+        pred = np.empty_like(x_interp)
+        pred[is_inner] = x_in_pred
+        pred[is_start] = x_start_pred
+        pred[is_end] = x_end_pred
+        return pred

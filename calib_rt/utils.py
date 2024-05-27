@@ -3,28 +3,9 @@
 import statsmodels.api as sm
 import numpy as np
 
+def cal_mrd(y, y_pred):
+    return np.nanmean(np.abs(y - y_pred) / y)
 
-def generate_noise(path, noise_prop, seed):
-    data = np.load(path)
-    x, y = data["x"], data["y"]
-    datamatrix = np.concatenate((x[:, np.newaxis], y[:, np.newaxis]), axis=1)
-
-    datasize = len(x)
-    datasize_noise = datasize * noise_prop
-
-    noise_xrange_left, noise_xrange_right = np.min(x), np.max(x)
-    noise_yrange_low, noise_yrange_up = np.min(y), np.max(y)
-
-    np.random.seed(seed)
-    noisematrix = np.concatenate(( \
-        np.random.uniform(noise_xrange_left, noise_xrange_right,
-                          (datasize_noise, 1), ),
-        np.random.uniform(noise_yrange_low, noise_yrange_up,
-                          (datasize_noise, 1), ),), axis=1)
-
-    datamatrix = np.concatenate((datamatrix, noisematrix), axis=0)
-
-    return datamatrix[:, 0], datamatrix[:, 1]
 
 def fit_by_raw_lowess(x, y,frac=0.1):
     lowess = sm.nonparametric.lowess

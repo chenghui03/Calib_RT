@@ -1,13 +1,5 @@
 # -*- coding:utf-8 -*-
 
-'''
-data sets for calib_rt
-
-.. calib_rt:
-    url
-
-'''
-
 import pandas as pd
 import numpy as np
 import os

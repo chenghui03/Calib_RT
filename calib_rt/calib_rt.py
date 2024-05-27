@@ -1,13 +1,5 @@
 # -*- coding:utf-8 -*-
 
-'''
-main function of calib_rt
-
-.. calib_rt:
-    url
-
-'''
-
 import numpy as np
 
 from .screen import screen_by_hist, screen_by_graph, polish_ends
@@ -16,16 +8,15 @@ from .utils import Normalization
 
 class Calib_RT(object):
     """
-    Calib_RT is used for TODO ...
+    Calib_RT is used for RT calibration.
 
     Attributes:
         fit(): fit by Calib_RT model
         predict(): predict by Calib_RT model
         setdata(): Set data for Calib_RT model
-        result(): TODO
     """
     
-    def __init__(self,bins:int=100,tol_bins:float=5) -> None:
+    def __init__(self,bins:int=100,tol_bins:float=10) -> None:
         """
         Set params for Calib_RT model
 
@@ -36,12 +27,7 @@ class Calib_RT(object):
         Examples:
             >>> import calib_rt 
             >>> model = calib_rt.Calib_RT(bin=100,tol_bin=5)
-        
-        References:
-            url
         """
-        # TODO 输入检查
-
         self.bins = bins
         self.tol_bins = tol_bins
 
@@ -57,12 +43,7 @@ class Calib_RT(object):
             >>> import calib_rt 
             >>> model = calib_rt.Calib_RT(bin=100,tol_bin=5)
             >>> model.setdata(x,y)
-        
-        References:
-            url
         """
-        # TODO 输入检查
-
         self.x = x
         self.y = y
         self.nomral = Normalization(x,y)
@@ -79,38 +60,21 @@ class Calib_RT(object):
         
         Examples:
             >>> import calib_rt 
-            >>> model = calib_rt.Calib_RT(bin=100,tol_bin=5)
+            >>> model = calib_rt.Calib_RT(bin=100,tol_bin=20)
             >>> model.fit(x,y)
-        
-        References:
-            url
         """
-        # TODO 输入检查，同时将x,y转化为np.ndarray
-
         self.setdata(x,y)
         self.__fit(manual_frac)
 
-
     def __fit(self,manual_frac):
 
-        x_hist,y_hist,rho_hist = screen_by_hist(self.x_normal,self.y_normal,
+        x_hist,y_hist,rho_hist = screen_by_hist(self.x_normal,
+                                                self.y_normal,
                                                 self.bins)
-        x_graph,y_graph = screen_by_graph(x_hist,y_hist,
-                                          rho_hist)
-        x_polish,y_polish = polish_ends(x_graph,y_graph,
-                                        self.tol_bins)
+        x_graph,y_graph = screen_by_graph(x_hist,y_hist, rho_hist)
+        x_polish,y_polish = polish_ends(x_graph,y_graph,self.tol_bins)
         self.x_fit,self.y_fit = fit_by_lowess(x_polish,y_polish,manual_frac)
         self.Predor = Predictor(self.x_fit,self.y_fit)
-
-
-    def result(self) -> str:
-        """
-        """
-        # TODO ：用何指标衡量拟合的好坏，现有合适的 Spectral library RT 范围
-        self.result_dict = dict()
-        xmin,xmax = np.min(self.x_fit),np.max(self.x_fit)
-        self.result_dict["good Spectral library RT range"] = np.array((xmin,xmax))
-
 
     def predict(self,x) -> np.ndarray:
         """
@@ -127,11 +91,7 @@ class Calib_RT(object):
             >>> model = calib_rt.Calib_RT(bin=100,tol_bin=5)
             >>> model.fit(x,y)
             >>> model.predict(x)
-        
-        References:
-            url
         """
-        # TODO 输入检查
         return self.__predict(x)
         
 
