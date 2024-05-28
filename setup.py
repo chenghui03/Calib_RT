@@ -6,7 +6,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="pycalib_rt",
-    version="0.1.0",
+    version="0.1.1",
     author="yichi zhang",
     author_email="kszyc1001@163.com",
     description="Calib-RT is designed for RT (retention time) calibration.",
