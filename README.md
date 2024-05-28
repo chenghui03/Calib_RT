@@ -1,11 +1,10 @@
-# Version
-<p align="center">
-    <img title="docker build version" src="https://img.shields.io/badge/Calib--RT-v0.1.0-green" alt="">
+# Calib-RT
+<p align="left">
+    <img title="docker build version" src="https://img.shields.io/badge/Calib--RT-version 0.1.0-green" alt="">
     <img title="python version" src="https://img.shields.io/badge/python-3.10-blue" alt="">
 </p>
-This document is for version 0.1.0 of calib_rt.
 
-# Calib-RT
+# Overview
 Calib-RT is an open-source Python software package designed for RT (retention time) calibration. 
 This package provides a flexible and robust solution for achieving accurate RT calibration across various data scales while handling a certain level of noise interference. 
 
