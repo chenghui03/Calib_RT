@@ -4,7 +4,7 @@
     <img title="python version" src="https://img.shields.io/badge/python-3.10-blue" alt="">
 </p>
 
-# Overview
+## Overview
 Calib-RT is an open-source Python software package designed for RT (retention time) calibration. 
 This package provides a flexible and robust solution for achieving accurate RT calibration across various data scales while handling a certain level of noise interference. 
 
@@ -14,7 +14,7 @@ The workflow diagram is below, providing an overview of the process. For a compr
 <img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/93750fced36ee36786e61817d71d6ec5e2c5fdd3/img/workflow.svg" alt="Your Image" width="500">
 </div>
 
-# Installation
+## Installation
 To use `calib_rt`, make sure you have the following dependencies installed:
 - Python (>= 3.10)
 - numpy (>= 1.26.0)
@@ -28,7 +28,7 @@ You can install the `calib_rt` package using pip:
 pip install pycalib_rt 
 ```
 
-# Usage
+## Usage
 Here is an example of how to use `calib_rt` for RT calibration:
 
 ```python
@@ -51,7 +51,7 @@ model.fit(x,y)
 y_pred = model.predict(x)         
 ```
 
-# Performance test
+## Performance test
 
 <div align=center>
 <img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/main/img/performance-test-1.jpg" alt="Your Image" width="500">
@@ -59,11 +59,11 @@ y_pred = model.predict(x)
 
 For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper. \# You can also get the plotting code from the [analyses](https://github.com/chenghui03/Calib_RT/tree/main/analyses) folder, which includes all the plotting code from the paper.
 
-# References
+## References
 
 [link of paper]()
 
 \# Code to reproduce analyses and figures in this paper is available at [analyses](https://github.com/chenghui03/Calib_RT/tree/main/analyses) folder.
 
-# License
+## License
 This project is licensed under the MIT License. See the LICENSE file for details.

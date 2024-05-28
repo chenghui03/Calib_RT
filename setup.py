@@ -30,3 +30,6 @@ setuptools.setup(
 
 #   python setup.py sdist build
 #   twine upload dist/*  
+
+#   git tag [new version] -m "detail"
+#   git push origin [new version]
