@@ -3,8 +3,6 @@
 import statsmodels.api as sm
 import numpy as np
 from scipy.interpolate import interp1d
-import utils
-
 
 class InputDataError(Exception):
     def __init__(self, message) -> None:
@@ -29,13 +27,12 @@ def fit_by_lowess(x, y, manual_frac=-1):
     x_fit, y_fit = np.array(x_fit), np.array(y_fit)
     return x_fit, y_fit
 
-
 def choose_frac(x, y):
     frac_v = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3]
     mape_v = []
     for frac in frac_v:
         y_pred = sm.nonparametric.lowess(y, x, frac, return_sorted=False)
-        mape = utils.cal_mrd(y, y_pred)
+        mape = np.nanmean(np.abs(y - y_pred) / y)
         mape_v.append(mape)
     return frac_v[np.argmin(mape_v)]
 
