@@ -1,6 +1,6 @@
 # Calib-RT
 <p align="left">
-    <img alt="PyPI - Version -blue" src="https://img.shields.io/pypi/v/pycalib_rt" url="https://pypi.org/project/pycalib-rt/">
+    <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/pycalib_rt?style=flat&label=Calib-RT&color=green&link=https%3A%2F%2Fpypi.org%2Fproject%2Fpycalib-rt%2F">
     <img title="python version" src="https://img.shields.io/badge/python-3.10-blue" alt="">
 </p>
 
