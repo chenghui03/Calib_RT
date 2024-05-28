@@ -52,17 +52,16 @@ y_pred = model.predict(x)
 # Performance test
 
 <div align=center>
-<img src="img\performance-test-1.jpg" alt="Your Image" width="500">
+<img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/main/img/performance-test-1.jpg" alt="Your Image" width="500">
 </div>
 
-For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper. \# You can also get the plot code from [analyses](analyses), where include all of the plot code in paper.
+For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper. \# You can also get the plotting code from the [analyses](https://github.com/chenghui03/Calib_RT/tree/main/analyses) folder, which includes all the plotting code from the paper.
 
 # References
 
 [link of paper]()
 
-\# Code to reproduce analyses and figures in this paper is available from GitHub at
-[analyses](analyses)
+\# Code to reproduce analyses and figures in this paper is available at [analyses](https://github.com/chenghui03/Calib_RT/tree/main/analyses) folder.
 
 # License
 This project is licensed under the MIT License. See the LICENSE file for details.
