@@ -33,6 +33,7 @@ Here is an example of how to use `calib_rt` for RT calibration:
 
 ```python
 import calib_rt
+
 # basic information of all built-in datasets 
 calib_rt.RTdatasets.get_datasets_list()  
          sample_type  datasets_num
@@ -41,10 +42,12 @@ calib_rt.RTdatasets.get_datasets_list()
    2            exp             2
    3         linear             2
    4              S             2
+
 # use first of "S" type datasets
 datasets = calib_rt.RTdatasets.get_pandas(sample_type="S",index_in_group=1)
 x = datasets["Spectral library RT"]
 y = datasets["Measured RT"]
+
 # fit and predict
 model = calib_rt.Calib_RT() 
 model.fit(x,y)
@@ -57,13 +60,12 @@ y_pred = model.predict(x)
 <img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/main/img/performance-test-1.jpg" alt="Your Image" width="500">
 </div>
 
-For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper. \# You can also get the plotting code from the [analyses](https://github.com/chenghui03/Calib_RT/tree/main/analyses) folder, which includes all the plotting code from the paper.
+Code for performance test is available in the [analysis](https://github.com/chenghui03/Calib_RT/tree/main/analyses).
+For a detailed analysis of the test conclusion, please refer to our paper.
 
 ## References
 
 [link of paper]()
-
-\# Code to reproduce analyses and figures in this paper is available at [analyses](https://github.com/chenghui03/Calib_RT/tree/main/analyses) folder.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
