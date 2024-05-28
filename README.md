@@ -1,5 +1,8 @@
 # Version
-
+<p align="center">
+    <img title="docker build version" src="https://img.shields.io/badge/Calib--RT-v0.1.0-green" alt="">
+    <img title="python version" src="https://img.shields.io/badge/python-3.10-blue" alt="">
+</p>
 This document is for version 0.1.0 of calib_rt.
 
 # Calib-RT
