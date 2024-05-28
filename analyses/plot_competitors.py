@@ -10,7 +10,7 @@ from sklearn.linear_model import RANSACRegressor
 from sklearn.base import BaseEstimator, RegressorMixin
 
 import calib_rt
-from analyses.ALR import Automated_Loess_Regression
+from ALR import Automated_Loess_Regression
 
 import logging
 logging.basicConfig(level=logging.INFO)
