@@ -1,6 +1,6 @@
 # Calib-RT
 <p align="left">
-    <img title="docker build version" src="https://img.shields.io/badge/Calib--RT-version 0.1.0-green" alt="">
+    <img alt="PyPI - Version -blue" src="https://img.shields.io/pypi/v/pycalib_rt" url="https://pypi.org/project/pycalib-rt/">
     <img title="python version" src="https://img.shields.io/badge/python-3.10-blue" alt="">
 </p>
 
