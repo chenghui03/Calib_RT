@@ -55,10 +55,14 @@ y_pred = model.predict(x)
 <img src="img\performance-test-1.jpg" alt="Your Image" width="500">
 </div>
 
-For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper.
+For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper. \# You can also get the plot code from [analyses](analyses), where include all of the plot code in paper.
 
 # References
+
 [link of paper]()
+
+\# Code to reproduce analyses and figures in this paper is available from GitHub at
+[analyses](analyses)
 
 # License
 This project is licensed under the MIT License. See the LICENSE file for details.

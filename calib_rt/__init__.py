@@ -11,4 +11,3 @@ Class:
 
 from .calib_rt import Calib_RT
 from .datasets import RTdatasets
-#from .ALR import Automated_Loess_Regression

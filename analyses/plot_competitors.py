@@ -10,7 +10,7 @@ from sklearn.linear_model import RANSACRegressor
 from sklearn.base import BaseEstimator, RegressorMixin
 
 import calib_rt
-from calib_rt.ALR import Automated_Loess_Regression
+from analyses.ALR import Automated_Loess_Regression
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -263,7 +263,6 @@ def  plot_one_big(data, fname):
     plt.tight_layout()
     plt.savefig(fname + '.jpg', dpi=350, bbox_inches='tight')
     plt.show()
-
 
 def main():
     types = ['exp', 'distort_left', 'distort_right', 'linear', 'S']
