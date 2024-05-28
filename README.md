@@ -13,7 +13,7 @@ The workflow diagram is below, providing an overview of the process. For a compr
 </div>
 
 # Installation
-To use calib_rt, make sure you have the following dependencies installed:
+To use `calib_rt`, make sure you have the following dependencies installed:
 - Python (>= 3.10)
 - numpy (>= 1.26.0)
 - pandas (>= 2.1.1)
@@ -21,13 +21,13 @@ To use calib_rt, make sure you have the following dependencies installed:
 - statsmodels (>= 0.14.0)
 - scipy (>= 1.11.3)
 
-You can install the calib_rt package using pip:
+You can install the `calib_rt` package using pip:
 ```bash
 pip install pycalib_rt 
 ```
 
 # Usage
-Here is an example of how to use Calib-RT for retention time calibration:
+Here is an example of how to use `calib_rt` for RT calibration:
 
 ```python
 import calib_rt
@@ -52,7 +52,7 @@ y_pred = model.predict(x)
 # Performance test
 
 <div align=center>
-<img src="https://raw.githubusercontent.com/chenghui03/Calib_RT/main/img/performance.jpg" alt="Your Image" width="500">
+<img src="img\performance-test-1.jpg" alt="Your Image" width="500">
 </div>
 
 For a detailed analysis of the test conclusion and all performance test results, please refer to the full paper.
