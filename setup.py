@@ -27,3 +27,6 @@ setuptools.setup(
                       'scipy>=1.11.3'],
     python_requires='>=3.10'
 )
+
+#   python setup.py sdist build
+#   twine upload dist/*  
