@@ -6,7 +6,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setuptools.setup(
     name="pycalib_rt",
-    version="0.1.1",
+    version="0.1.2",
     author="yichi zhang",
     author_email="kszyc1001@163.com",
     description="Calib-RT is designed for RT (retention time) calibration.",
@@ -27,9 +27,3 @@ setuptools.setup(
                       'scipy>=1.11.3'],
     python_requires='>=3.10'
 )
-
-#   python setup.py sdist build
-#   twine upload dist/*  
-
-#   git tag [new version] -m "detail"
-#   git push origin [new version]
