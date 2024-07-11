@@ -65,7 +65,7 @@ For a detailed analysis of the test conclusion, please refer to our paper.
 
 ## References
 
-[link of paper]()
+Calib-RT: an open source python package for peptide retention time calibration in DIA mass spectrometry data [link of paper](https://doi.org/10.1093/bioinformatics/btae417)
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
